@@ -1,13 +1,14 @@
 const twoSum = (nums, target) => {
 	let answer = [];
+	let found = false;
 	nums.forEach((num, i) => {
 		let matchingNum = target - num;
-		if (nums.includes(matchingNum) && i !== nums.indexOf(matchingNum)) {
-			answer[1] = i;
-			answer[0] = nums.indexOf(matchingNum);
+		if (!found && nums.includes(matchingNum) && i !== nums.indexOf(matchingNum)) {
+			answer.push(i);
+			answer.push(nums.indexOf(matchingNum));
+			found = true;
 		}
 	})
-	if (answer.length > 0) return answer;
+	if (found) return answer;
 	return false;
 }
-
